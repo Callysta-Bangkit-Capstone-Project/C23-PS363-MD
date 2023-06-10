@@ -11,9 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Callysta"
         tools:targetApi="31">
+
+        <activity
+            android:name=".view.ui.SplashScreenActivity"
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
         <activity
             android:name=".view.ui.SubLevelActivity"
-            android:exported="false"/>
+            android:exported="false" />
 
         <activity
             android:name=".view.ui.LearnToWriteActivity"
@@ -21,15 +33,7 @@
 
         <activity
             android:name=".view.ui.HomepageActivity"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+            android:exported="true"/>
     </application>
 
 </manifest>

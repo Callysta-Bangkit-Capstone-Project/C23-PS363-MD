@@ -10,5 +10,8 @@
     <string name="check">Periksa</string>
     <string name="clear">Hapus</string>
     <string name="gif_description">gambar tutorial cara menulis huruf</string>
+    <string name="user_profile_description">profil pengguna</string>
+    <string name="volume_off_description">volume dibisukan</string>
+    <string name="app_logo">logo aplikasi</string>
 
 </resources>
