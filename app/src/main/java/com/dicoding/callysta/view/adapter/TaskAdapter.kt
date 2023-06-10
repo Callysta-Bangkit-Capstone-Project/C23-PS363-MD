@@ -1,10 +1,14 @@
 package com.dicoding.callysta.view.adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.callysta.databinding.ItemRowTaskBinding
 import com.dicoding.callysta.model.Task
+import com.dicoding.callysta.view.ui.SubLevelActivity
 
 class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
@@ -21,6 +25,10 @@ class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdap
         holder.binding.apply {
             taskNumberTextView.text = (position + 1).toString()
             taskTitleTextView.text = "Belajar"
+        }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, SubLevelActivity::class.java)
+            holder.itemView.context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(holder.itemView.context as Activity?).toBundle())
         }
     }
 

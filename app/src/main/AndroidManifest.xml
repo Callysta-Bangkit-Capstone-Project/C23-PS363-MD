@@ -12,8 +12,10 @@
         android:theme="@style/Theme.Callysta"
         tools:targetApi="31">
         <activity
-            android:name=".SubLevelActivity"
-            android:exported="false" />
+            android:name=".view.ui.SubLevelActivity"
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".view.ui.HomepageActivity"
             android:exported="true">
