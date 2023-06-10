@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Callysta</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="tab_text_0">Baca</string>
     <string name="tab_text_1">tulis</string>
+    <string name="number_example">12</string>
+    <string name="sub_header">Sub Header</string>
+    <string name="back_button">back button</string>
 </resources>
