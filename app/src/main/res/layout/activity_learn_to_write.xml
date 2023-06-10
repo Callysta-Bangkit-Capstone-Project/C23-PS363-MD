@@ -8,8 +8,13 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.LearnToWriteActivity">
 
+    <include
+        android:id="@+id/subHeader"
+        layout="@layout/subpage_header"/>
+
     <ImageView
         android:id="@+id/tutorialGIFImageView"
+        android:layout_marginTop="8dp"
         android:layout_width="350dp"
         android:layout_height="240dp"
         tools:src="@tools:sample/backgrounds/scenic"
