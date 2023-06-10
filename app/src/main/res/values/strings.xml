@@ -3,4 +3,8 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="tab_text_0">Baca</string>
     <string name="tab_text_1">tulis</string>
+    <string name="write_below">Tulis\ndibawah</string>
+    <string name="check">Periksa</string>
+    <string name="clear">Hapus</string>
+    <string name="gif_description">gambar tutorial cara menulis huruf</string>
 </resources>

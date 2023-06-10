@@ -11,14 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Callysta"
         tools:targetApi="31" >
+
+        <activity android:name=".view.ui.HomepageActivity"
+            android:exported="false"/>
+
         <activity
-            android:name=".view.ui.HomepageActivity"
+            android:name=".view.ui.LearnToWriteActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 
