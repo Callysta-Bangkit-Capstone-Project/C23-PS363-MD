@@ -4,6 +4,11 @@
     <string name="tab_text_0">Baca</string>
     <string name="tab_text_1">tulis</string>
     <string name="number_example">12</string>
-    <string name="sub_header">Sub Header</string>
-    <string name="back_button">back button</string>
+    <string name="subheader">subjudul</string>
+    <string name="back_button">tombol kembali</string>
+    <string name="write_below">Tulis\ndibawah</string>
+    <string name="check">Periksa</string>
+    <string name="clear">Hapus</string>
+    <string name="gif_description">gambar tutorial cara menulis huruf</string>
+
 </resources>
