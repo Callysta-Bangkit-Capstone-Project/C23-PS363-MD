@@ -1,16 +1,15 @@
 package com.dicoding.callysta.view.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.ContentValues
+import android.os.Build
 import android.os.Bundle
-import android.view.Window
-import androidx.recyclerview.widget.DividerItemDecoration
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.callysta.R
+import com.dicoding.callysta.core.response.SublevelItem
 import com.dicoding.callysta.databinding.ActivitySubLevelBinding
-import com.dicoding.callysta.model.Task
 import com.dicoding.callysta.view.adapter.SubLevelAdapter
-import com.dicoding.callysta.view.adapter.TaskAdapter
+import java.util.ArrayList
 
 class SubLevelActivity : AppCompatActivity() {
 
@@ -26,17 +25,25 @@ class SubLevelActivity : AppCompatActivity() {
         val layoutManager = GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
         binding.subLevelRecyclerView.layoutManager = layoutManager
 
-        showSubLevel()
-    }
-
-    private fun showSubLevel() {
-        val level = mutableListOf<Task>()
-        for (i in 1..10) {
-            level.add(Task("Belajar"))
+        val data = if (Build.VERSION.SDK_INT >= 33) {
+            Log.d(ContentValues.TAG, "onCreate: 0")
+            intent.getParcelableArrayListExtra(EXTRA_QUESTION, SublevelItem::class.java)
+        } else {
+            Log.d(ContentValues.TAG, "onCreate: 1")
+            @Suppress("DEPRECATION")
+            intent.getParcelableArrayListExtra(EXTRA_QUESTION)
         }
 
-        val adapter = SubLevelAdapter(level)
+        showSubLevel(data)
+    }
+
+    private fun showSubLevel(data: ArrayList<SublevelItem>?) {
+        val adapter = SubLevelAdapter(data)
 
         binding.subLevelRecyclerView.adapter = adapter
+    }
+
+    companion object {
+        const val EXTRA_QUESTION = "extra_question"
     }
 }
