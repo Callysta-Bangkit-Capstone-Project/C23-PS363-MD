@@ -2,6 +2,7 @@ package com.dicoding.callysta.view.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.dicoding.callysta.databinding.ActivityLearnToWriteBinding
 
 class LearnToWriteActivity : AppCompatActivity() {
@@ -17,6 +18,10 @@ class LearnToWriteActivity : AppCompatActivity() {
 
         binding.apply {
 
+            Glide.with(this@LearnToWriteActivity)
+                .load(intent.getStringExtra(IMAGE_URL))
+                .into(tutorialGIFImageView)
+
 
             checkMaterialButton.setOnClickListener {
 
@@ -31,5 +36,9 @@ class LearnToWriteActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    companion object {
+        const val IMAGE_URL = "image_url"
     }
 }

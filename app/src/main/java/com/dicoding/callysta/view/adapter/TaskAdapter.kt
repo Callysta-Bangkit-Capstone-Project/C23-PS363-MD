@@ -29,7 +29,7 @@ class TaskAdapter(private val data: List<WriteItem>) : RecyclerView.Adapter<Task
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, SubLevelActivity::class.java)
-            intent.putParcelableArrayListExtra(SubLevelActivity.EXTRA_QUESTION, data[position].sublevel)
+            intent.putParcelableArrayListExtra(SubLevelActivity.EXTRA_QUESTION, ArrayList(data[position].sublevel))
             holder.itemView.context.startActivity(intent)
         }
     }

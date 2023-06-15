@@ -30,15 +30,19 @@ class SubLevelAdapter(private val data: ArrayList<SublevelItem>?) :
         return SubLevelViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = data!!.size
+    override fun getItemCount(): Int = data?.size ?: 0
 
     override fun onBindViewHolder(holder: SubLevelViewHolder, position: Int) {
         holder.binding.apply {
-            subLevelNumberView.text = data?.get(0)?.id.toString()
+            subLevelNumberView.text = data?.get(position)?.id.toString()
         }
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, LearnToWriteActivity::class.java)
-            holder.itemView.context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(holder.itemView.context as Activity?).toBundle())
+
+        holder.itemView.run {
+            setOnClickListener {
+                val intent = Intent(holder.itemView.context, LearnToWriteActivity::class.java)
+                intent.putExtra(LearnToWriteActivity.IMAGE_URL, data?.get(position)?.gifLink)
+                context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(holder.itemView.context as Activity?).toBundle())
+            }
         }
     }
 
