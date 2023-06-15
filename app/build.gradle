@@ -53,4 +53,6 @@ dependencies {
     //androidDraw
     implementation 'com.github.divyanshub024:AndroidDraw:v0.1'
 
+    //wav recorder
+    implementation 'com.github.squti:Android-Wave-Recorder:1.7.0'
 }
