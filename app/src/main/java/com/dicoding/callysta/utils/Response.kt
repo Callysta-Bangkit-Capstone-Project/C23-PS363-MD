@@ -1,4 +1,4 @@
-package com.dicoding.callysta.core.utils
+package com.dicoding.callysta.utils
 
 sealed class Response<out R> private constructor() {
     data class Success<out T>(val data: T) : Response<T>()

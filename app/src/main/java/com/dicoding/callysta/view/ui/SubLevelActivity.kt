@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.dicoding.callysta.core.response.SublevelItem
 import com.dicoding.callysta.databinding.ActivitySubLevelBinding
+import com.dicoding.callysta.model.SublevelItem
 import com.dicoding.callysta.view.adapter.SubLevelAdapter
 import java.util.ArrayList
 

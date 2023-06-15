@@ -3,16 +3,12 @@ package com.dicoding.callysta.view.adapter
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.callysta.databinding.ItemRowSublevelBinding
-import com.dicoding.callysta.core.model.Task
-import com.dicoding.callysta.core.response.SublevelItem
-import com.dicoding.callysta.core.response.WriteItem
+import com.dicoding.callysta.model.SublevelItem
 import com.dicoding.callysta.view.ui.LearnToWriteActivity
-import com.dicoding.callysta.view.ui.SubLevelActivity
 import java.util.ArrayList
 
 class SubLevelAdapter(private val data: ArrayList<SublevelItem>?) :

@@ -1,6 +1,6 @@
-package com.dicoding.callysta.core.source.network
+package com.dicoding.callysta.data.remote
 
-import com.dicoding.callysta.core.response.QuestionResponse
+import com.dicoding.callysta.model.QuestionResponse
 import retrofit2.http.GET
 
 interface ApiService {

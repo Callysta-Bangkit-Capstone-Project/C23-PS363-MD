@@ -1,11 +1,10 @@
-package com.dicoding.callysta.core.repository
+package com.dicoding.callysta.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.dicoding.callysta.core.response.QuestionResponse
-import com.dicoding.callysta.core.source.network.ApiConfig
-import com.dicoding.callysta.core.source.network.ApiService
-import com.dicoding.callysta.core.utils.Response
+import com.dicoding.callysta.data.remote.ApiService
+import com.dicoding.callysta.model.QuestionResponse
+import com.dicoding.callysta.utils.Response
 
 class Repository(
     private val apiServiceAssets: ApiService,

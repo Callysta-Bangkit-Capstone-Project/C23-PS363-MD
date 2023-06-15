@@ -1,4 +1,4 @@
-package com.dicoding.callysta.core.source.network
+package com.dicoding.callysta.data.remote
 
 import com.dicoding.callysta.BuildConfig
 import okhttp3.OkHttpClient

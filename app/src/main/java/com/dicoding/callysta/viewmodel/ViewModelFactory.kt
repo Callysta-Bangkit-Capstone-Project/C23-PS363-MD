@@ -1,10 +1,9 @@
-package com.dicoding.callysta
+package com.dicoding.callysta.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.callysta.core.di.Injection
-import com.dicoding.callysta.core.repository.Repository
-import com.dicoding.callysta.viewmodel.HomepageViewModel
+import com.dicoding.callysta.utils.Injection
+import com.dicoding.callysta.repository.Repository
 
 class ViewModelFactory private constructor(
     private val repository: Repository

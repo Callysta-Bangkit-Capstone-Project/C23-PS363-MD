@@ -1,4 +1,4 @@
-package com.dicoding.callysta.core.response
+package com.dicoding.callysta.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

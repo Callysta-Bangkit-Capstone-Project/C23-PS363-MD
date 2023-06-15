@@ -3,12 +3,9 @@ package com.dicoding.callysta.view.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
-import androidx.activity.viewModels
 import com.dicoding.callysta.R
-import com.dicoding.callysta.ViewModelFactory
 import com.dicoding.callysta.databinding.ActivityHomepageBinding
 import com.dicoding.callysta.view.adapter.TaskPagerAdapter
-import com.dicoding.callysta.viewmodel.HomepageViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

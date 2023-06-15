@@ -1,14 +1,11 @@
 package com.dicoding.callysta.view.adapter
 
-import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.callysta.databinding.ItemRowTaskBinding
-import com.dicoding.callysta.core.model.Task
-import com.dicoding.callysta.core.response.WriteItem
+import com.dicoding.callysta.model.WriteItem
 import com.dicoding.callysta.view.ui.SubLevelActivity
 
 class TaskAdapter(private val data: List<WriteItem>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {

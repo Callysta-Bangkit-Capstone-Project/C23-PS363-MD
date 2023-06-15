@@ -1,9 +1,8 @@
-package com.dicoding.callysta.core.di
+package com.dicoding.callysta.utils
 
-import android.content.Context
 import com.dicoding.callysta.BuildConfig
-import com.dicoding.callysta.core.repository.Repository
-import com.dicoding.callysta.core.source.network.ApiConfig
+import com.dicoding.callysta.repository.Repository
+import com.dicoding.callysta.data.remote.ApiConfig
 
 object Injection {
     fun provideRepository(): Repository {
