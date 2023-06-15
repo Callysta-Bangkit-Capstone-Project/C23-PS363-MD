@@ -6,8 +6,8 @@ import com.dicoding.callysta.data.remote.ApiConfig
 
 object Injection {
     fun provideRepository(): Repository {
-        val apiServiceAssets = ApiConfig.getApiService(BuildConfig.BASE_URL_ASSETS)
-        val apiServiceCloud = ApiConfig.getApiService(BuildConfig.BASE_URL_CLOUD)
+        val apiServiceAssets = ApiConfig.getApiServiceAssets()
+        val apiServiceCloud = ApiConfig.getApiServiceCloud()
         return Repository(apiServiceAssets, apiServiceCloud)
     }
 }

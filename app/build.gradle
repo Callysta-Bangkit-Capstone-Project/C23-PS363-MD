@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "BASE_URL_ASSETS", '"https://raw.githubusercontent.com/Callysta-Bangkit-Capstone-Project/Callysta-Assets/main/"')
-        buildConfigField("String", "BASE_URL_CLOUD", '"https://raw.githubusercontent.com/Callysta-Bangkit-Capstone-Project/Callysta-Assets/main/"')
+        buildConfigField("String", "BASE_URL_CLOUD", '"https://callysta-api.as.r.appspot.com/"')
     }
 
     buildTypes {
