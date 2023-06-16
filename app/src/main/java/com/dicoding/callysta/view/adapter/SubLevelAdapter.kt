@@ -36,7 +36,10 @@ class SubLevelAdapter(private val data: ArrayList<SublevelItem>?) :
         holder.itemView.run {
             setOnClickListener {
                 val intent = Intent(holder.itemView.context, LearnToWriteActivity::class.java)
-                intent.putExtra(LearnToWriteActivity.IMAGE_URL, data?.get(position)?.gifLink)
+                intent.also {
+                    it.putExtra(LearnToWriteActivity.IMAGE_URL, data?.get(position)?.imageUrl)
+                    it.putExtra(LearnToWriteActivity.ACTUAL_ANSWER, data?.get(position)?.answer)
+                }
                 context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(holder.itemView.context as Activity?).toBundle())
             }
         }

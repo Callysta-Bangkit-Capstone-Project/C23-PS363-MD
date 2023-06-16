@@ -13,7 +13,7 @@
         layout="@layout/subpage_header"/>
 
     <ImageView
-        android:id="@+id/tutorialGIFImageView"
+        android:id="@+id/exampleImageView"
         android:layout_marginTop="8dp"
         android:layout_width="350dp"
         android:layout_height="240dp"
@@ -25,6 +25,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.1"/>
 
+    <ProgressBar
+        android:id="@+id/imageViewProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/exampleImageView"
+        app:layout_constraintStart_toStartOf="@id/exampleImageView"
+        app:layout_constraintEnd_toEndOf="@id/exampleImageView"
+        app:layout_constraintBottom_toBottomOf="@id/exampleImageView"
+        tools:visibility="visible" />
+
     <TextView
         android:id="@+id/writeBelowTextView"
         android:layout_width="wrap_content"
@@ -35,7 +47,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="casual"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tutorialGIFImageView"
+        app:layout_constraintTop_toBottomOf="@id/exampleImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -78,6 +90,18 @@
         app:layout_constraintTop_toBottomOf="@id/drawView"
         app:layout_constraintEnd_toEndOf="@id/drawView"
         app:layout_constraintBaseline_toBaselineOf="@id/checkMaterialButton"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

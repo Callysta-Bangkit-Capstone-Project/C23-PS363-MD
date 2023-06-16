@@ -34,8 +34,8 @@ data class SublevelItem(
 	@field:SerializedName("id")
 	val id: Int,
 
-	@field:SerializedName("gifLink")
-	val gifLink: String
+	@field:SerializedName("imageUrl")
+	val imageUrl: String
 ) : Parcelable
 
 data class ReadItem(

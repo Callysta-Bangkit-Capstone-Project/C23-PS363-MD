@@ -11,10 +11,11 @@ class ViewModelFactory private constructor(
     ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(HomepageViewModel::class.java)) {
-            return HomepageViewModel(repository) as T
+        return when {
+            modelClass.isAssignableFrom(HomepageViewModel::class.java) -> HomepageViewModel(repository) as T
+            modelClass.isAssignableFrom(LearnToWriteViewModel::class.java) -> LearnToWriteViewModel(repository) as T
+            else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
-        throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 
     companion object {
