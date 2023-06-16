@@ -18,7 +18,7 @@ Ruben Tricahya Boediono | C038DSX0600 | Cloud Computing | [Profile](https://gith
 ## Feature 
 - Handwriting Alphabet Recognition: The application allows users to write or draw uppercase alphabets directly on the screen using a touch or stylus input
 - Speech-to-Text Conversion: In addition to the handwriting recognition feature, Callysta also offers a speech-to-text conversion functionality. Users can speak into the application, and the integrated speech recognition system will transcribe the spoken words into text format.
-- 
+
 ## Technology Used in this application
 - Android Studio
 - Kotlin
@@ -29,12 +29,29 @@ Ruben Tricahya Boediono | C038DSX0600 | Cloud Computing | [Profile](https://gith
 - Android Wave Recorder
 
 ## Application Preview
+![Image](https://i.ibb.co/K9jVr6b/89354-Converted-01.png)
 
 # Step By Step Using the Feature
 ## How to use Handwriting Alphabet Recognition Feature
-- isi sendiri 
+- Open the Application
+- Go to "Tulis" Section 
+- Choose "Belajar"
+- Choose Level 
+- See Videos to draw and Draw in the canvas
+- Click "Periksa" to check if your answer is right and Click "Hapus" if you want to delete ur drawing
+- Next Level will be unlocked if previous level is cleared :D
+
 ## How to use Speech to Text Feature
-- isi sendiri 
+- Open the Application
+- Go to "Baca" Section 
+- Choose "Latihan"
+- Choose Level 
+- Allow microphone in your device
+- Read the question picture 
+- Hold microphone icon and answer the question
+- If you want to hear your beautiful voice click play button beside microphone 
+- Click "Periksa" to check if your answer is right
+- Next Level will be unlocked if previous level is cleared :D
 
 # Collaboration Resources
 - [Machine Learning](https://github.com/Callysta-Bangkit-Capstone-Project/Callysta-Machine-Learning)
