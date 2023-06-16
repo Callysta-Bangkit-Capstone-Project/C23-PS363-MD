@@ -42,7 +42,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:textSize="48sp"
-            android:textStyle="bold"
             android:background="@drawable/background_task_title_gradient"
             android:gravity="center"
             card_view:layout_constraintStart_toStartOf="@id/guideline"
@@ -60,6 +59,7 @@
             card_view:layout_constraintTop_toTopOf="@id/taskTitleTextView"
             card_view:layout_constraintEnd_toEndOf="@id/taskTitleTextView"
             card_view:layout_constraintBottom_toBottomOf="@id/taskTitleTextView"
+            tools:visibility="visible"
             android:visibility="invisible"/>
 
 
