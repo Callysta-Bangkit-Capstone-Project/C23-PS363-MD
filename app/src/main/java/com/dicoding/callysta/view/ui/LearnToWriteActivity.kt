@@ -1,6 +1,5 @@
 package com.dicoding.callysta.view.ui
 
-import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build

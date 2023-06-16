@@ -6,7 +6,6 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.dicoding.callysta.data.local.ProgressPreferences
 import com.dicoding.callysta.model.AudioCheckResponse
-import com.dicoding.callysta.model.ImageCheckRequest
 import com.dicoding.callysta.model.Progress
 import com.dicoding.callysta.repository.Repository
 import com.dicoding.callysta.utils.Response

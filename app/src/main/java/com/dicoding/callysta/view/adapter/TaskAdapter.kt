@@ -9,7 +9,6 @@ import com.dicoding.callysta.R
 import com.dicoding.callysta.databinding.ItemRowTaskBinding
 import com.dicoding.callysta.model.Progress
 import com.dicoding.callysta.model.QuestionItem
-import com.dicoding.callysta.model.QuestionResponse
 import com.dicoding.callysta.utils.InterfaceUtil.showToast
 import com.dicoding.callysta.view.ui.SubLevelActivity
 

@@ -3,7 +3,6 @@ package com.dicoding.callysta.data.remote
 import com.dicoding.callysta.model.AudioCheckResponse
 import com.dicoding.callysta.model.ImageCheckRequest
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiServiceCloud {

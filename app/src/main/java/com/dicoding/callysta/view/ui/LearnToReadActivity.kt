@@ -2,7 +2,6 @@ package com.dicoding.callysta.view.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
