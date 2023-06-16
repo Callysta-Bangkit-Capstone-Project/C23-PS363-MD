@@ -1,10 +1,11 @@
 package com.dicoding.callysta.view.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.callysta.R
 import com.dicoding.callysta.databinding.ActivityHomepageBinding
+import com.dicoding.callysta.utils.dataStore
 import com.dicoding.callysta.view.adapter.TaskPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -24,7 +25,7 @@ class HomepageActivity : AppCompatActivity() {
     }
 
     private fun tabLayoutViewPagerSetup() {
-        val taskPagerAdapter = TaskPagerAdapter(this)
+        val taskPagerAdapter = TaskPagerAdapter(this, dataStore)
         val viewPager = binding.viewPager
         viewPager.adapter = taskPagerAdapter
 
@@ -32,7 +33,6 @@ class HomepageActivity : AppCompatActivity() {
         TabLayoutMediator(tabs, viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
-
     }
 
     companion object {

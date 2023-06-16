@@ -7,13 +7,13 @@ import kotlinx.parcelize.Parcelize
 data class QuestionResponse(
 
 	@field:SerializedName("read")
-	val read: List<ReadItem>,
+	val read: List<QuestionItem>,
 
 	@field:SerializedName("write")
-	val write: List<WriteItem>
+	val write: List<QuestionItem>
 )
 
-data class WriteItem(
+data class QuestionItem(
 
 	@field:SerializedName("level")
 	val level: Int,
@@ -38,14 +38,3 @@ data class SublevelItem(
 	val imageUrl: String
 ) : Parcelable
 
-data class ReadItem(
-
-	@field:SerializedName("level")
-	val level: Int,
-
-	@field:SerializedName("name")
-	val name: String,
-
-	@field:SerializedName("sublevel")
-	val sublevel: List<Any>
-)

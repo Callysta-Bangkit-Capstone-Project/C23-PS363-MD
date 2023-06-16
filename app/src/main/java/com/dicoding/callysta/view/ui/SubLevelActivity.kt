@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dicoding.callysta.databinding.ActivitySubLevelBinding
+import com.dicoding.callysta.model.Progress
 import com.dicoding.callysta.model.SublevelItem
 import com.dicoding.callysta.view.adapter.SubLevelAdapter
 import java.util.ArrayList
@@ -35,15 +36,29 @@ class SubLevelActivity : AppCompatActivity() {
         }
 
         showSubLevel(data)
+
+        binding.subHeader.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun showSubLevel(data: ArrayList<SublevelItem>?) {
-        val adapter = SubLevelAdapter(data)
+        val progress  = if (Build.VERSION.SDK_INT >= 33) {
+            Log.d(ContentValues.TAG, "onCreate: 0")
+            intent.getParcelableExtra(EXTRA_PROGRESS, Progress::class.java)
+        } else {
+            Log.d(ContentValues.TAG, "onCreate: 1")
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(EXTRA_PROGRESS)
+        }
+
+        val adapter = SubLevelAdapter(data, progress)
 
         binding.subLevelRecyclerView.adapter = adapter
     }
 
     companion object {
         const val EXTRA_QUESTION = "extra_question"
+        const val EXTRA_PROGRESS = "extra_progress"
     }
 }

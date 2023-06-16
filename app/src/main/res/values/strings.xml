@@ -17,6 +17,7 @@
     <string name="rec_stop_instruction">lepas untuk berhenti</string>
     <string name="draw_valid">Selamat, kamu benar🥳</string>
     <string name="draw_invalid">Maaf, silahkan coba lagi🙏</string>
+    <string name="locked">terkunci</string>
 
 
 </resources>

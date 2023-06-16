@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface ApiServiceAssets {
 
-    @GET("soal.json")
+    @GET("task.json")
     suspend fun getQuestionList(): QuestionResponse
 
 }

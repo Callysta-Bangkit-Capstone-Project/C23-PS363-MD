@@ -15,8 +15,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dicoding.callysta.R
 import com.dicoding.callysta.databinding.ActivityLearnToReadBinding
+import com.dicoding.callysta.model.Progress
 import com.dicoding.callysta.utils.InterfaceUtil
 import com.dicoding.callysta.utils.Response
+import com.dicoding.callysta.utils.dataStore
 import com.dicoding.callysta.viewmodel.LearnToReadViewModel
 import com.dicoding.callysta.viewmodel.LearnToWriteViewModel
 import com.dicoding.callysta.viewmodel.ViewModelFactory
@@ -33,7 +35,7 @@ class LearnToReadActivity : AppCompatActivity() {
     }
 
     private val viewModel by viewModels<LearnToReadViewModel> {
-        ViewModelFactory.getInstance()
+        ViewModelFactory.getInstance(dataStore)
     }
 
     private var fileName: String = ""
@@ -131,6 +133,10 @@ class LearnToReadActivity : AppCompatActivity() {
         binding.checkMaterialButton.setOnClickListener {
             checkAudio()
         }
+
+        binding.subHeader.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun startPlaying() {
@@ -183,6 +189,27 @@ class LearnToReadActivity : AppCompatActivity() {
                             getString(R.string.draw_valid),
                             this@LearnToReadActivity
                         )
+
+                        viewModel.getProgress().observe(this@LearnToReadActivity) {
+                            if (intent.getIntExtra(SUB_LEVEL, 0) == intent.getIntExtra(
+                                    SUB_LEVEL_SIZE, -1) ) {
+                                val progress = Progress(
+                                    it.levelRead + 1,
+                                    1,
+                                    it.levelWrite,
+                                    it.subLevelWrite
+                                )
+                                updateProgress(progress)
+                            } else if (intent.getIntExtra(SUB_LEVEL, 0) == it.subLevelWrite) {
+                                val progress = Progress(
+                                    it.levelRead,
+                                    it.subLevelRead + 1,
+                                    it.levelWrite,
+                                    it.subLevelWrite
+                                )
+                                updateProgress(progress)
+                            }
+                        }
                     } else {
                         InterfaceUtil.showToast(
                             response.data.transcriptions[0],
@@ -199,11 +226,21 @@ class LearnToReadActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateProgress(progress: Progress) {
+        Log.d(TAG, "onCreate: $progress")
+        viewModel.updateProgress(progress)
+    }
+
     companion object {
         private const val TAG = "LearnToReadActivity"
 
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.RECORD_AUDIO)
         private const val REQUEST_CODE_PERMISSION = 10
+
+        const val IMAGE_URL = "image_url"
+        const val ACTUAL_ANSWER = "actual_answer"
+        const val SUB_LEVEL = "sub_level"
+        const val SUB_LEVEL_SIZE = "sub_level_size"
     }
 }
 
