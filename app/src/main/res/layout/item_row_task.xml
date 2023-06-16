@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="8dp"
+    card_view:cardCornerRadius="24dp"
+    card_view:cardElevation="24dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            card_view:layout_constraintGuide_begin="60dp" />
+
+        <TextView
+            android:id="@+id/taskNumberTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textSize="32sp"
+            android:background="@color/yellow_task_number"
+            tools:text="1"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintEnd_toEndOf="@id/guideline"/>
+
+        <TextView
+            android:id="@+id/taskTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="48sp"
+            android:background="@drawable/background_task_title_gradient"
+            android:gravity="center"
+            card_view:layout_constraintStart_toStartOf="@id/guideline"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Belajar"/>
+
+        <ImageView
+            android:id="@+id/lockImage"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_lock"
+            card_view:layout_constraintStart_toStartOf="@id/taskTitleTextView"
+            card_view:layout_constraintTop_toTopOf="@id/taskTitleTextView"
+            card_view:layout_constraintEnd_toEndOf="@id/taskTitleTextView"
+            card_view:layout_constraintBottom_toBottomOf="@id/taskTitleTextView"
+            tools:visibility="visible"
+            android:visibility="invisible"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

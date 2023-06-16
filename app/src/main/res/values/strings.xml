@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Callysta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tab_text_0">Baca</string>
+    <string name="tab_text_1">tulis</string>
+    <string name="number_example">12</string>
+    <string name="subheader">subjudul</string>
+    <string name="back_button">tombol kembali</string>
+    <string name="write_below">Tulis\ndibawah</string>
+    <string name="check">Periksa</string>
+    <string name="clear">Hapus</string>
+    <string name="gif_description">gambar tutorial cara menulis huruf</string>
+    <string name="user_profile_description">profil pengguna</string>
+    <string name="volume_off_description">volume dibisukan</string>
+    <string name="app_logo">logo aplikasi</string>
+    <string name="rec_instruction">tahan untuk merekam</string>
+    <string name="rec_stop_instruction">lepas untuk berhenti</string>
+    <string name="draw_valid">Selamat, kamu benar🥳</string>
+    <string name="draw_invalid">Salah, silahkan coba lagi🙏</string>
+    <string name="locked">Silahkan selesaikan tingkat sebelumnya</string>
+
+
 </resources>
