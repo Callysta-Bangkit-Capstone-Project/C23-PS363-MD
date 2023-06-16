@@ -1,17 +1,12 @@
 package com.dicoding.callysta.view.ui
 
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.dicoding.callysta.R
 import com.dicoding.callysta.databinding.ActivityLearnToWriteBinding
 import com.dicoding.callysta.model.ImageCheckRequest
@@ -53,27 +48,34 @@ class LearnToWriteActivity : AppCompatActivity() {
 
                 val imageCheckRequest = getImageCheckRequest(drawView.getBitmap())
 
-                viewModel.checkImage(imageCheckRequest).observe(this@LearnToWriteActivity) { response ->
+                viewModel.checkImage(imageCheckRequest)
+                    .observe(this@LearnToWriteActivity) { response ->
 
-                    when (response) {
-                        is Response.Loading -> progressBar.visibility = View.VISIBLE
-                        is Response.Success -> {
-                            progressBar.visibility = View.GONE
+                        when (response) {
+                            is Response.Loading -> progressBar.visibility = View.VISIBLE
+                            is Response.Success -> {
+                                progressBar.visibility = View.GONE
 
-                            if (response.data) {
-                                InterfaceUtil.showToast(getString(R.string.draw_valid), this@LearnToWriteActivity)
-                            } else {
-                                InterfaceUtil.showToast(getString(R.string.draw_invalid), this@LearnToWriteActivity)
+                                if (response.data) {
+                                    InterfaceUtil.showToast(
+                                        getString(R.string.draw_valid),
+                                        this@LearnToWriteActivity
+                                    )
+                                } else {
+                                    InterfaceUtil.showToast(
+                                        getString(R.string.draw_invalid),
+                                        this@LearnToWriteActivity
+                                    )
+                                }
+
                             }
+                            is Response.Error -> {
+                                progressBar.visibility = View.GONE
+                                InterfaceUtil.showToast(response.error, this@LearnToWriteActivity)
+                            }
+                        }
 
-                        }
-                        is Response.Error -> {
-                            progressBar.visibility = View.GONE
-                            InterfaceUtil.showToast(response.error, this@LearnToWriteActivity)
-                        }
                     }
-
-                }
 
             }
 

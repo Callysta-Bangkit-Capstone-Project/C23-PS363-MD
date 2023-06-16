@@ -14,6 +14,7 @@ class ViewModelFactory private constructor(
         return when {
             modelClass.isAssignableFrom(HomepageViewModel::class.java) -> HomepageViewModel(repository) as T
             modelClass.isAssignableFrom(LearnToWriteViewModel::class.java) -> LearnToWriteViewModel(repository) as T
+            modelClass.isAssignableFrom(LearnToReadViewModel::class.java) -> LearnToReadViewModel(repository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

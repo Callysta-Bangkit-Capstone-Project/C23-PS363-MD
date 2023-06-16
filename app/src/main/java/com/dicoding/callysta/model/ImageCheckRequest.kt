@@ -8,5 +8,4 @@ data class ImageCheckRequest(
     val actualAnswer: String,
 
     val image: String
-
 )

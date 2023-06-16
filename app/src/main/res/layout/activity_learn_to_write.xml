@@ -19,6 +19,8 @@
         android:layout_height="240dp"
         tools:src="@tools:sample/backgrounds/scenic"
         android:contentDescription="@string/gif_description"
+        android:background="@color/white"
+        android:padding="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

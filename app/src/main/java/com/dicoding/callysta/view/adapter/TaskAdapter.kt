@@ -8,9 +8,11 @@ import com.dicoding.callysta.databinding.ItemRowTaskBinding
 import com.dicoding.callysta.model.WriteItem
 import com.dicoding.callysta.view.ui.SubLevelActivity
 
-class TaskAdapter(private val data: List<WriteItem>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(private val data: List<WriteItem>) :
+    RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
-    inner class TaskViewHolder(val binding: ItemRowTaskBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class TaskViewHolder(val binding: ItemRowTaskBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val binding = ItemRowTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,7 +28,10 @@ class TaskAdapter(private val data: List<WriteItem>) : RecyclerView.Adapter<Task
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, SubLevelActivity::class.java)
-            intent.putParcelableArrayListExtra(SubLevelActivity.EXTRA_QUESTION, ArrayList(data[position].sublevel))
+            intent.putParcelableArrayListExtra(
+                SubLevelActivity.EXTRA_QUESTION,
+                ArrayList(data[position].sublevel)
+            )
             holder.itemView.context.startActivity(intent)
         }
     }

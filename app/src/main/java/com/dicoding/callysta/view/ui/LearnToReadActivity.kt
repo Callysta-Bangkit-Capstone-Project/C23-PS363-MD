@@ -7,13 +7,21 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dicoding.callysta.R
 import com.dicoding.callysta.databinding.ActivityLearnToReadBinding
+import com.dicoding.callysta.utils.InterfaceUtil
+import com.dicoding.callysta.utils.Response
+import com.dicoding.callysta.viewmodel.LearnToReadViewModel
+import com.dicoding.callysta.viewmodel.LearnToWriteViewModel
+import com.dicoding.callysta.viewmodel.ViewModelFactory
 import com.github.squti.androidwaverecorder.WaveRecorder
+import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,6 +30,10 @@ class LearnToReadActivity : AppCompatActivity() {
 
     private val binding: ActivityLearnToReadBinding by lazy {
         ActivityLearnToReadBinding.inflate(layoutInflater)
+    }
+
+    private val viewModel by viewModels<LearnToReadViewModel> {
+        ViewModelFactory.getInstance()
     }
 
     private var fileName: String = ""
@@ -69,9 +81,8 @@ class LearnToReadActivity : AppCompatActivity() {
             )
         }
 
-        binding.btnRec.setOnTouchListener { v, event ->
+        binding.btnRec.setOnTouchListener { _, event ->
             val action = event.action
-
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -116,6 +127,10 @@ class LearnToReadActivity : AppCompatActivity() {
                 startPlaying()
             }
         }
+
+        binding.checkMaterialButton.setOnClickListener {
+            checkAudio()
+        }
     }
 
     private fun startPlaying() {
@@ -153,6 +168,35 @@ class LearnToReadActivity : AppCompatActivity() {
 
     private fun stopRecording(waveRecorder: WaveRecorder?) {
         waveRecorder?.stopRecording()
+    }
+
+    private fun checkAudio() {
+        val file = File(fileName)
+        viewModel.checkAudio(file).observe(this) { response ->
+            when (response) {
+                is Response.Loading -> binding.progressBar.visibility = View.VISIBLE
+                is Response.Success -> {
+                    binding.progressBar.visibility = View.GONE
+
+                    if (response.data.transcriptions[0].lowercase() == "aku") {
+                        InterfaceUtil.showToast(
+                            getString(R.string.draw_valid),
+                            this@LearnToReadActivity
+                        )
+                    } else {
+                        InterfaceUtil.showToast(
+                            response.data.transcriptions[0],
+                            this@LearnToReadActivity
+                        )
+                    }
+
+                }
+                is Response.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    InterfaceUtil.showToast(response.error, this@LearnToReadActivity)
+                }
+            }
+        }
     }
 
     companion object {
