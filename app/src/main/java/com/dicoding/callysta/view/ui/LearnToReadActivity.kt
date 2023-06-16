@@ -2,8 +2,11 @@ package com.dicoding.callysta.view.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -13,12 +16,16 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.Glide
 import com.dicoding.callysta.R
 import com.dicoding.callysta.databinding.ActivityLearnToReadBinding
 import com.dicoding.callysta.model.Progress
+import com.dicoding.callysta.model.SublevelItem
 import com.dicoding.callysta.utils.InterfaceUtil
 import com.dicoding.callysta.utils.Response
 import com.dicoding.callysta.utils.dataStore
+import com.dicoding.callysta.view.ui.SubLevelActivity.Companion.EXTRA_TYPE
 import com.dicoding.callysta.viewmodel.LearnToReadViewModel
 import com.dicoding.callysta.viewmodel.LearnToWriteViewModel
 import com.dicoding.callysta.viewmodel.ViewModelFactory
@@ -46,6 +53,8 @@ class LearnToReadActivity : AppCompatActivity() {
     private var player: MediaPlayer? = null
     private var onPlay: Boolean = false
 
+    private var data : ArrayList<SublevelItem>? = null
+    private var progress : Progress? = null
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -75,6 +84,20 @@ class LearnToReadActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(binding.root)
 
+        data = if (Build.VERSION.SDK_INT >= 33) {
+            intent.getParcelableArrayListExtra(LearnToReadActivity.EXTRA_QUESTION, SublevelItem::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableArrayListExtra(LearnToReadActivity.EXTRA_QUESTION)
+        }
+
+        progress = if (Build.VERSION.SDK_INT >= 33) {
+            intent.getParcelableExtra(SubLevelActivity.EXTRA_PROGRESS, Progress::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(SubLevelActivity.EXTRA_PROGRESS)
+        }
+
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
                 this,
@@ -82,6 +105,16 @@ class LearnToReadActivity : AppCompatActivity() {
                 REQUEST_CODE_PERMISSION
             )
         }
+
+        val circularProgressDrawable = CircularProgressDrawable(this@LearnToReadActivity)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+
+        Glide.with(this@LearnToReadActivity)
+            .load(intent.getStringExtra(IMAGE_URL))
+            .placeholder(circularProgressDrawable)
+            .into(binding.exampleImageView)
 
         binding.btnRec.setOnTouchListener { _, event ->
             val action = event.action
@@ -135,7 +168,7 @@ class LearnToReadActivity : AppCompatActivity() {
         }
 
         binding.subHeader.btnBack.setOnClickListener {
-            finish()
+            onBackPressed()
         }
     }
 
@@ -184,7 +217,9 @@ class LearnToReadActivity : AppCompatActivity() {
                 is Response.Success -> {
                     binding.progressBar.visibility = View.GONE
 
-                    if (response.data.transcriptions[0].lowercase() == "aku") {
+                    if (response.data.transcriptions[0].lowercase() == intent.getStringExtra(
+                            LearnToWriteActivity.ACTUAL_ANSWER.lowercase()
+                        )) {
                         InterfaceUtil.showToast(
                             getString(R.string.draw_valid),
                             this@LearnToReadActivity
@@ -193,26 +228,27 @@ class LearnToReadActivity : AppCompatActivity() {
                         viewModel.getProgress().observe(this@LearnToReadActivity) {
                             if (intent.getIntExtra(SUB_LEVEL, 0) == intent.getIntExtra(
                                     SUB_LEVEL_SIZE, -1) ) {
-                                val progress = Progress(
+                                progress = Progress(
                                     it.levelRead + 1,
                                     1,
                                     it.levelWrite,
                                     it.subLevelWrite
                                 )
-                                updateProgress(progress)
-                            } else if (intent.getIntExtra(SUB_LEVEL, 0) == it.subLevelWrite) {
-                                val progress = Progress(
+                                updateProgress(progress!!)
+                            } else if (intent.getIntExtra(SUB_LEVEL, 0) == it.subLevelRead) {
+                                progress = Progress(
                                     it.levelRead,
                                     it.subLevelRead + 1,
                                     it.levelWrite,
                                     it.subLevelWrite
                                 )
-                                updateProgress(progress)
+                                updateProgress(progress!!)
                             }
                         }
                     } else {
+                        val msg = if (response.data.transcriptions[0] == "") "Suara tidak jelas" else "Terdengar: ${response.data.transcriptions[0]}"
                         InterfaceUtil.showToast(
-                            response.data.transcriptions[0],
+                            msg,
                             this@LearnToReadActivity
                         )
                     }
@@ -231,6 +267,20 @@ class LearnToReadActivity : AppCompatActivity() {
         viewModel.updateProgress(progress)
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@LearnToReadActivity, SubLevelActivity::class.java)
+        Log.d(TAG, "onBackPressed: $progress")
+        intent.putParcelableArrayListExtra(
+            SubLevelActivity.EXTRA_QUESTION,
+            data
+        )
+        intent.putExtra(SubLevelActivity.EXTRA_PROGRESS, progress)
+        intent.putExtra(SubLevelActivity.EXTRA_TYPE, 0)
+        startActivity(intent)
+        finish()
+    }
+
     companion object {
         private const val TAG = "LearnToReadActivity"
 
@@ -241,6 +291,9 @@ class LearnToReadActivity : AppCompatActivity() {
         const val ACTUAL_ANSWER = "actual_answer"
         const val SUB_LEVEL = "sub_level"
         const val SUB_LEVEL_SIZE = "sub_level_size"
+
+        const val EXTRA_QUESTION = "extra_question"
+        const val EXTRA_PROGRESS = "extra_progress"
     }
 }
 

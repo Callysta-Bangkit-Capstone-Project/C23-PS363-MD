@@ -27,22 +27,24 @@ class SubLevelActivity : AppCompatActivity() {
         binding.subLevelRecyclerView.layoutManager = layoutManager
 
         val data = if (Build.VERSION.SDK_INT >= 33) {
-            Log.d(ContentValues.TAG, "onCreate: 0")
             intent.getParcelableArrayListExtra(EXTRA_QUESTION, SublevelItem::class.java)
         } else {
-            Log.d(ContentValues.TAG, "onCreate: 1")
             @Suppress("DEPRECATION")
             intent.getParcelableArrayListExtra(EXTRA_QUESTION)
         }
 
-        showSubLevel(data)
+        val type = intent.getIntExtra(EXTRA_TYPE, 0)
+
+        Log.d(TAG, "onCreate: $data")
+
+        showSubLevel(data, type)
 
         binding.subHeader.btnBack.setOnClickListener {
             finish()
         }
     }
 
-    private fun showSubLevel(data: ArrayList<SublevelItem>?) {
+    private fun showSubLevel(data: ArrayList<SublevelItem>?, type: Int) {
         val progress  = if (Build.VERSION.SDK_INT >= 33) {
             Log.d(ContentValues.TAG, "onCreate: 0")
             intent.getParcelableExtra(EXTRA_PROGRESS, Progress::class.java)
@@ -52,13 +54,20 @@ class SubLevelActivity : AppCompatActivity() {
             intent.getParcelableExtra(EXTRA_PROGRESS)
         }
 
-        val adapter = SubLevelAdapter(data, progress)
+        val adapter = SubLevelAdapter(data, progress, type)
 
         binding.subLevelRecyclerView.adapter = adapter
     }
 
     companion object {
+        private const val TAG = "SublevelActivity"
         const val EXTRA_QUESTION = "extra_question"
         const val EXTRA_PROGRESS = "extra_progress"
+        const val EXTRA_TYPE = "extra_type"
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

@@ -66,8 +66,8 @@ class TaskFragment(private val dataStore: DataStore<Preferences>, private val ty
 
     private fun showTasks(data: QuestionResponse, progress: Progress, view: View) {
         val adapter = when(type) {
-            0 -> TaskAdapter(data.read, progress)
-            1 -> TaskAdapter(data.write, progress)
+            0 -> TaskAdapter(data.read, progress, type)
+            1 -> TaskAdapter(data.write, progress, type)
             else -> throw IndexOutOfBoundsException()
         }
         binding.taskRecyclerView.adapter = adapter

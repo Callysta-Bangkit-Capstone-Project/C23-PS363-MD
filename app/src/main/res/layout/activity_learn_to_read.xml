@@ -12,7 +12,7 @@
         layout="@layout/subpage_header"/>
 
     <ImageView
-        android:id="@+id/tutorialGIFImageView"
+        android:id="@+id/exampleImageView"
         android:layout_width="350dp"
         android:layout_height="240dp"
         android:layout_marginTop="8dp"
@@ -26,13 +26,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.1"/>
 
+    <ProgressBar
+        android:id="@+id/imageViewProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="@id/exampleImageView"
+        app:layout_constraintStart_toStartOf="@id/exampleImageView"
+        app:layout_constraintEnd_toEndOf="@id/exampleImageView"
+        app:layout_constraintBottom_toBottomOf="@id/exampleImageView"
+        tools:visibility="visible" />
+
     <com.dicoding.callysta.view.ui.WaveformView
         android:id="@+id/wavefromView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tutorialGIFImageView"
+        app:layout_constraintTop_toBottomOf="@+id/exampleImageView"
         app:layout_constraintBottom_toTopOf="@+id/tvInstruction"/>
 
 

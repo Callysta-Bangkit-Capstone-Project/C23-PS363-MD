@@ -32,7 +32,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintTop_toTopOf="@id/exampleImageView"
         app:layout_constraintStart_toStartOf="@id/exampleImageView"
         app:layout_constraintEnd_toEndOf="@id/exampleImageView"
@@ -63,35 +63,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/grey"/>
 
-    <Button
-        android:id="@+id/checkMaterialButton"
-        android:layout_width="160dp"
-        android:layout_height="56dp"
-        android:text="@string/check"
-        android:layout_marginTop="16dp"
-        android:textSize="24sp"
-        android:textAllCaps="false"
-        android:fontFamily="casual"
-        android:textStyle="bold"
-        android:textColor="@color/grey"
-        app:cornerRadius="50dp"
+    <LinearLayout
+        android:id="@+id/llbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/drawView"
-        app:layout_constraintStart_toStartOf="@id/drawView"/>
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/clearMaterialButton"
-        android:layout_width="160dp"
-        android:layout_height="56dp"
-        android:text="@string/clear"
-        android:textSize="24sp"
-        android:textAllCaps="false"
-        android:fontFamily="casual"
-        android:textStyle="bold"
-        android:textColor="@color/grey"
-        app:cornerRadius="50dp"
-        app:layout_constraintTop_toBottomOf="@id/drawView"
-        app:layout_constraintEnd_toEndOf="@id/drawView"
-        app:layout_constraintBaseline_toBaselineOf="@id/checkMaterialButton"/>
+        <Button
+            android:id="@+id/checkMaterialButton"
+            android:layout_width="160dp"
+            android:layout_height="56dp"
+            android:text="@string/check"
+            android:textSize="24sp"
+            android:textAllCaps="false"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:textColor="@color/grey"
+            app:cornerRadius="50dp"/>
+
+        <Button
+            android:id="@+id/clearMaterialButton"
+            android:layout_width="160dp"
+            android:layout_height="56dp"
+            android:text="@string/clear"
+            android:textSize="24sp"
+            android:textAllCaps="false"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:textColor="@color/grey"
+            app:cornerRadius="50dp"/>
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
