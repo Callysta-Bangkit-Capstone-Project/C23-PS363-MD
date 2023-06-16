@@ -2,7 +2,6 @@ package com.dicoding.callysta.utils
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.dicoding.callysta.BuildConfig
 import com.dicoding.callysta.data.local.ProgressPreferences
 import com.dicoding.callysta.repository.Repository
 import com.dicoding.callysta.data.remote.ApiConfig
