@@ -1,3 +1,5 @@
+[![Callysta](app/src/main/res/drawable/logo_callysta.png)](https://github.com/Callysta-Bangkit-Capstone-Project/Callysta-MobileDev)
+
 # Callysta Android Application 
 GitHub Repositories of Bangkit Academy 2023 Capstone Project from team PS363 learning path Mobile Development 
 
